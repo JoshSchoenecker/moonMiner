@@ -29,7 +29,7 @@ let autoUpgrades = {
 
 // A function that will increase catnip count on click
 function mine() {
-    totalCatnip = ++totalCatnip
+    ++totalCatnip
     console.log("nip");
     updateCatnip()
 }
@@ -38,3 +38,4 @@ function mine() {
 function updateCatnip(mine) {
     document.getElementById("catnip-count").innerHTML = totalCatnip.toString();
 }
+

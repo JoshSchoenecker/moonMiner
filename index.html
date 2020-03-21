@@ -14,7 +14,7 @@
 
 
 
-  <body class="backgroundGif">
+  <body class="backgroundGif container-fluid vh-100">
 
     <div class="container-fluid ">
         <div class="row justify-content-center">
@@ -23,7 +23,7 @@
     </div>
 
 <div class="container-fluid">
-    <div class="row">
+    <div class="row footer">
         <div class="col">
             <div class="card mx-auto" style="width: 18rem;">
                 <div class="card-header text-center">
@@ -47,7 +47,7 @@
         </div>
 
         <div class="col text-center">
-            <input class="colorBar rounded-circle" type="image" src="Images/colorBargif.gif">
+            <input class="colorBar rounded-circle" type="image" src="Images/colorbar.gif">
             <input type="image" onclick="mine()" class="theMoon" src="Images/moongif.gif" alt="Sorry Captain, we can't locate a planet!">
         </div>
     </div>
@@ -55,33 +55,39 @@
 
 
 
+<!-- Cat Pack -->
 
     <div class="container-fluid">
-        <div class="card">
+        <div class="card  footerPosition">
             <div class="card-header text-center footerHead">
                 <h4 class="">Cat Pack</h4>
             </div>
-            <div class="row card-body footerFoot px-0 py-2 text-warning text-center">
-                <div class="col-1 m-auto">
+            <div class="row card-body footerFoot px-0 py-2 text-warning text-center justify-content-between ">
+                <div class="col-1">
                     <img class="catnipIcon pb-" src="Images/catNip.png" alt="CatNip">
-                    <div id="catnip-count" class="mb-0 pt-1"></div>
+                    <p id="catnip-count" class="mb-0 pt-1"></p>
                 </div>
-                <div class="col-1 m-auto">
+                <div class="col-1">
                     <img class="catnipIcon" src="/Images/clawndoms2.png" alt="Claw Caps">
+                    <p id="claw-cap-count" class="mb-0 pt-1"></p>
                 </div>
-                <div class="col-1 m-auto">
+                <div class="col-1">
                     <img class="catnipIcon" src="/Images/catTreat.png" alt="Treats">
+                    <p id="treat-count" class="mb-0 pt-1"></p>
                 </div>
-                <div class="col-1 m-auto">
+                <div class="col-1">
                     <img class="catnipIcon" src="/Images/catstronaut2.png" alt="AstroCat">
+                    <p id="astrocat-count" class="mb-0 pt-1"></p>
                 </div>
-                <div class="col-1 m-auto">
+                <div class="col-1">
                     <img class="catnipIcon" src="/Images/astronaut.pns.png" alt="Astronaut">
+                    <p id="astronaut-count" class="mb-0 pt-1"></p>
                 </div>
             </div>
         </div>
     </div>
-    
+
+  </body>
 
     <!-- Optional JavaScript -->
     <script src="main.js"></script>
