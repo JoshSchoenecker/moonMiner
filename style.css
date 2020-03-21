@@ -1,0 +1,38 @@
+.backgroundGif {
+    background-image: url(../Images/backgroundGif.gif);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.theMoon {
+    height: 30rem;
+    width: 30rem;
+}
+
+.colorBar {
+    height: 4rem;
+    width: 16rem;
+    margin-top: 1rem;
+}
+
+
+
+/* Footer/Inventory */
+.footerHead {
+    background-color: rgb(11, 2, 83);
+    color: #ffff00;
+    border-top: 3px groove #770081;
+    border-left: 3px groove #770081;
+    border-right: 3px groove #770081;
+    box-shadow: 0px 2px 100px 1em #770081;
+}
+.footerFoot {
+    background-color: rgb(56, 0, 185);
+    color: #ffff00;
+}
+
+.catnipIcon {
+    height: 2.5rem;
+    width: 2.5rem;
+}
