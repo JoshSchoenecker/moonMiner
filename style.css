@@ -6,10 +6,16 @@
     
 }
 
+.headerBorder {
+    top: 2rem;
+    border: 1px solid #ffaa2b;
+    box-shadow: 0px 2px 75px 1em #ffc31e;
+}
+
 .theMoon {
     height: 25rem;
     width: 25rem;
-    margin-top: 15rem;
+    margin-top: 5rem;
 }
 
 .colorBar {
@@ -39,6 +45,7 @@
     width: 2.5rem;
 }
 .footerPosition {
+    top: 1rem;
     bottom: 5rem;
     width: 50rem;
     left: 2rem;
