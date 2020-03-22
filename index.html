@@ -16,17 +16,17 @@
 
   <body class="backgroundGif container-fluid vh-100">
 
-    <div class="container-fluid ">
+    <div class="container-fluid mt-5">
         <div class="row justify-content-center">
-            <div class="col-12 headerBorder text-center m-auto">
+            <div class="col-12 headerBorder text-center w-100 m-auto">
                 <h1 style="color: #ffaa2b;">Collector Catnip</h1>
             </div> 
         </div>
     </div>
 <!-- Store -->
-<div class="container-fluid">
-    <div class="row footer">
-        <div class="col">
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-12 col-lg-6">
             <div class="card mx-auto" style="width: 18rem;">
                 <div class="card-header text-center">
                   <span>Kitties</span> Big Box
@@ -34,31 +34,31 @@
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item text-center">
                       <h5 class="shopBorder" id="cat-treat-price">Price: 25cn</h5>
-                    <input class="catnipIcon" type="image" onclick="buyCatTreat()" src="/Images/catTreat.png" alt="Treats">
+                    <input class="catnipIcon" type="image" onclick="buyClickUpgrade('catTreats'); drawClickUpgrades('catTreats')" src="/Images/catTreat.png" alt="Treats">
                     <h5 class="shopBorder">Cat Treat</h5>
                   </li>
                   <li class="list-group-item text-center">
-                    <h5 class="shopBorder" id="claw=cap-price">Price: 50cn</h5>
-                      <input class="catnipIcon" type="image" onclick="buyClawndom()" src="/Images/clawndoms2.png" alt="Claw Caps">
+                    <h5 class="shopBorder" id="claw-cap-price">Price: 50cn</h5>
+                      <input class="catnipIcon" type="image" onclick="buyClickUpgrade('clawndoms'); drawClickUpgrades('clawndoms')" src="/Images/clawndoms2.png" alt="Clawndoms">
                       <h5 class="shopBorder">Clawndomn</h5>
                     </li>
                   <li class="list-group-item text-center">
-                    <h5 class="shopBorder">Price: 100cn</h5>
-                      <input class="catnipIcon" type="image" onclick="buyAstroCat()" src="/Images/catstronaut.png" alt="AstroCat">
+                    <h5 id="astro-cat-price" class="shopBorder">Price: 100cn</h5>
+                      <input id="auto-hide" class="catnipIcon" type="image" onclick="buyAutoUpgrade('cat'); startInterval(); drawAutoUpgrades('cat')" src="/Images/catstronaut.png" alt="AstroCat">
                       <h5 class="shopBorder">AstroCat</h5>
                 </li>
                   <li class="list-group-item text-center">
-                    <h5 class="shopBorder">Price: 750cn</h5>
-                      <input class="catnipIcon" type="image" onclick="buyHuman()" src="/Images/astronaut.pns.png" alt="Astronaut">
+                    <h5 id="human-price" class="shopBorder">Price: 750cn</h5>
+                      <input class="catnipIcon" type="image" onclick="buyAutoUpgrade('human'); startInterval(); drawAutoUpgrades('human')" src="/Images/astronaut.pns.png" alt="Astronaut">
                       <h5 class="shopBorder">Human</h5>
                 </li>
                 </ul>
               </div>
         </div>
 <!-- Moon and catnip icon -->
-        <div class="col text-center">
+        <div class="col-12 col-lg-6 text-center">
             <input class="colorBar rounded-circle" type="image" src="Images/colorbar.gif">
-            <input id="clicker" type="image" onclick="mine()" class="theMoon" src="Images/moongif.gif" alt="Sorry Captain, we can't locate a planet!">
+            <input type="image" onclick="mine()" class="theMoon" src="Images/moongif.gif" alt="Sorry Captain, we can't locate a planet!">
         </div>
     </div>
 </div>
@@ -67,8 +67,8 @@
 
 <!-- Cat Pack -->
 
-    <div class="container-fluid">
-        <div class="card  footerPosition">
+    <div class="container-fluid set-cat-pack">
+        <div class="card">
             <div class="card-header text-center footerHead">
                 <h4 class="">Cat Pack</h4>
             </div>
@@ -80,18 +80,22 @@
                 <div class="col-1">
                     <img class="catnipIcon" src="/Images/clawndoms2.png" alt="Claw Caps">
                     <p id="claw-cap-count" class="mb-0 pt-1"></p>
+                    <p>x5 per click</p>
                 </div>
                 <div class="col-1">
                     <img class="catnipIcon" src="/Images/catTreat.png" alt="Treats">
                     <p id="treat-count" class="mb-0 pt-1"></p>
+                    <p>x2 per click</p>
                 </div>
                 <div class="col-1">
                     <img class="catnipIcon" src="/Images/catstronaut2.png" alt="AstroCat">
                     <p id="astrocat-count" class="mb-0 pt-1"></p>
+                    <p>x10 /3s</p>
                 </div>
                 <div class="col-1">
                     <img class="catnipIcon" src="/Images/astronaut.pns.png" alt="Astronaut">
                     <p id="astronaut-count" class="mb-0 pt-1"></p>
+                    <p>x25 /3s</p>
                 </div>
             </div>
         </div>
