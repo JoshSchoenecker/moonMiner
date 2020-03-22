@@ -8,38 +8,24 @@ let clickUpgrades = {
         price: 50,
         quantity: 0,
         multiplyer: 5,
-        modifier1: function(){
-            console.log(this.quantity * this.multiplyer + totalCatnip);
-              
-        },
     },
 
     catTreats: {
-        // price 25
-        price: 2,
+        price: 25,
         quantity: 0,
         multiplyer: 2,
-        // modifier2: function(){
-        //     if (this.quantity > 0){
-            
-        //     console.log(totalCatnip = (this.quantity * this.multiplyer + totalCatnip));
-        //     }
-              
-        // },
     }
 }
 
 let autoUpgrades = {
     human: {
-        // price 750
         price: 750,
         quantity: 0,
         multiplyer: 25,
     },
     cat: {
-        // price 100
         price: 100,
-        quantity: 2,
+        quantity: 0,
         multiplyer: 10,
     }
 }
@@ -50,78 +36,114 @@ function mine() {
     console.log("nip");
     updateCatnip()
 }
-// A function to update the displayed catnip count
-function updateCatnip(mine) {
-    document.getElementById("catnip-count").innerHTML = totalCatnip.toString();
-}
 
-// Upgrade Purchases
+// Click Upgrade Purchases
 function buyCatTreat() {
-if (totalCatnip >= clickUpgrades.catTreats.price){
-    
-    document.getElementById("catnip-count").innerHTML = 
-    (totalCatnip = (totalCatnip - clickUpgrades.catTreats.price)).toString()
-    
-    ++clickUpgrades.catTreats.quantity
-    
-    document.getElementById("treat-count").innerHTML =
-    clickUpgrades.catTreats.quantity.toString()
-
-    harvest = harvest + clickUpgrades.catTreats.multiplyer
-} else {
-    alert("You do not have enought Catnip!")
-}
+    if (totalCatnip >= clickUpgrades.catTreats.price){
+        clickUpgrades.catTreats.quantity++
+        harvest += clickUpgrades.catTreats.multiplyer
+    } else {
+        alert("You do not have enought Catnip!")
+    }
+updateCatnip()
 }
 
 function buyClawndom() {
     if (totalCatnip >= clickUpgrades.clawndoms.price){
-        document.getElementById("catnip-count").innerHTML = 
-       (totalCatnip = (totalCatnip - clickUpgrades.clawndoms.price)).toString()
-        ++clickUpgrades.clawndoms.quantity
-        document.getElementById("claw-cap-count").innerHTML =
-        clickUpgrades.clawndoms.quantity.toString()
-
-        harvest = harvest + clickUpgrades.clawndoms.multiplyer
+        clickUpgrades.clawndoms.quantity++
+        harvest += clickUpgrades.clawndoms.multiplyer
     } else {
      alert("You do not have enought Catnip!")   
     }
-    }
+}
 
+function buyClickUpgrade(upgrade) {
+    let item = clickUpgrades[upgrade];
+        if (totalCatnip >= item.price){
+          totalCatnip -= item.price
+          item.price = (item.price * 1.5)
+          item.quantity++
+          harvest += item.multiplyer
+          updateCatnip()
+
+        } else {
+           alert("You do not have enought Catnip!")
+          }
+          
+}
+
+// Auto Upgrade Purchases
 function buyAstroCat() {
     if (totalCatnip >= autoUpgrades.cat.price){
-            document.getElementById("catnip-count").innerHTML = 
-           (totalCatnip = (totalCatnip - autoUpgrades.cat.price)).toString()
-            ++autoUpgrades.cat.quantity
-            document.getElementById("astrocat-count").innerHTML =
-            autoUpgrades.cat.quantity.toString()
+        autoUpgrades.cat.quantity++
     } else {
-    alert("You do not have enought Catnip!")        
+        alert("You do not have enought Catnip!")        
     }
 }
 
 function buyHuman() {
-            if (totalCatnip >= autoUpgrades.human.price){
-                document.getElementById("catnip-count").innerHTML = 
-               (totalCatnip = (totalCatnip - autoUpgrades.human.price)).toString()
-                ++autoUpgrades.human.quantity
-                document.getElementById("astronaut-count").innerHTML =
-                autoUpgrades.human.quantity.toString()
-
+    if (totalCatnip >= autoUpgrades.human.price){
+        autoUpgrades.human.quantity++
             } else {
-             alert("You do not have enought Catnip!")   
+                alert("You do not have enought Catnip!")   
             }
-        }
+}
 
-// Autoclicks
+function buyAutoUpgrade(upgrade) {
+    let item = autoUpgrades[upgrade];
+        if (totalCatnip >= item.price){
+            totalCatnip -= item.price
+            item.price = (item.price * 2)
+            item.quantity++
+            harvest += item.multiplyer
+            updateCatnip()
+        } else {
+            alert("You do not have enought Catnip!")
+        }
+              
+}
+
+// A setinterval for autoupgrades
 function collectAutoUpgrades() {
     for (let i = 0; i < autoUpgrades.length; i++) {
         collectionInterval = (autoUpgrades.cat.quantity * autoUpgrades.cat.multiplyer + totalCatnip)
     }
-    totalCatnip = (totalCatnip + collectionInterval)
-    
+    totalCatnip = (totalCatnip + collectionInterval);
+    updateCatnip()   
 }
 
 function startInterval() {
+
     collectionInterval = setInterval(collectAutoUpgrades, 3000) 
 }
-startInterval()
+
+// Functions for drawing Items to screen
+function updateCatnip() {
+    document.getElementById("catnip-count").innerHTML = totalCatnip.toString();
+}
+
+function drawClickUpgrades(drawUpgrade) {
+    let drawItem = clickUpgrades[drawUpgrade];
+    if (drawUpgrade === "catTreats"){
+        document.getElementById("treat-count").innerHTML = drawItem.quantity
+        document.getElementById("cat-treat-price").innerHTML = ("Price: " + drawItem.price + "cn")
+
+    } else if (drawUpgrade === "clawndoms") {
+        document.getElementById("claw-cap-count").innerHTML = drawItem.quantity
+        document.getElementById("claw-cap-price").innerHTML = ("Price: " + drawItem.price + "cn")
+    }
+}
+
+function drawAutoUpgrades(drawUpgrade) {
+    let drawItem = autoUpgrades[drawUpgrade];
+    if (drawUpgrade === "cat"){
+        document.getElementById("astrocat-count").innerHTML = drawItem.quantity
+        document.getElementById("astro-cat-price").innerHTML = ("Price: " + drawItem.price + "cn")
+
+    } else if (drawUpgrade === 'human') {
+        document.getElementById("astronaut-count").innerHTML = drawItem.quantity
+        document.getElementById("human-price").innerHTML = ("Price: " + drawItem.price + "cn")
+    }
+}
+
+// hidden elements
