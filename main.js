@@ -38,30 +38,11 @@ function mine() {
 }
 
 // Click Upgrade Purchases
-function buyCatTreat() {
-    if (totalCatnip >= clickUpgrades.catTreats.price){
-        clickUpgrades.catTreats.quantity++
-        harvest += clickUpgrades.catTreats.multiplyer
-    } else {
-        alert("You do not have enought Catnip!")
-    }
-updateCatnip()
-}
-
-function buyClawndom() {
-    if (totalCatnip >= clickUpgrades.clawndoms.price){
-        clickUpgrades.clawndoms.quantity++
-        harvest += clickUpgrades.clawndoms.multiplyer
-    } else {
-     alert("You do not have enought Catnip!")   
-    }
-}
-
 function buyClickUpgrade(upgrade) {
     let item = clickUpgrades[upgrade];
         if (totalCatnip >= item.price){
           totalCatnip -= item.price
-          item.price = (item.price * 1.5)
+          item.price = (item.price * 2)
           item.quantity++
           harvest += item.multiplyer
           updateCatnip()
@@ -73,22 +54,6 @@ function buyClickUpgrade(upgrade) {
 }
 
 // Auto Upgrade Purchases
-function buyAstroCat() {
-    if (totalCatnip >= autoUpgrades.cat.price){
-        autoUpgrades.cat.quantity++
-    } else {
-        alert("You do not have enought Catnip!")        
-    }
-}
-
-function buyHuman() {
-    if (totalCatnip >= autoUpgrades.human.price){
-        autoUpgrades.human.quantity++
-            } else {
-                alert("You do not have enought Catnip!")   
-            }
-}
-
 function buyAutoUpgrade(upgrade) {
     let item = autoUpgrades[upgrade];
         if (totalCatnip >= item.price){
@@ -97,6 +62,7 @@ function buyAutoUpgrade(upgrade) {
             item.quantity++
             harvest += item.multiplyer
             updateCatnip()
+            startInterval()
         } else {
             alert("You do not have enought Catnip!")
         }
@@ -146,4 +112,52 @@ function drawAutoUpgrades(drawUpgrade) {
     }
 }
 
-// hidden elements
+
+// random event
+function randomEvent() {
+    let randomNumber = Math.floor((Math.random() * 7) + 1);
+    if (totalCatnip >= 10){
+    switch (randomNumber) {
+        case 1:
+            if (autoUpgrades.cat.quantity >= 1) {
+            document.getElementById("astrocat-count").innerHTML = (autoUpgrades.cat.quantity = (autoUpgrades.cat.quantity - 1)).toString()
+            alert("You have lost a AstroCat!")
+            } else (totalCatnip >= 20)
+                totalCatnip = (totalCatnip - 20)
+                alert("Jerry did 20cn!")
+        break;
+        case 2:
+            totalCatnip = (totalCatnip - 45)
+            alert("I think we need to have an intervention... Jerry did 45cn")
+        break;
+        case 3: 
+            totalCatnip = (totalCatnip + 45)
+            alert("A couple of AstroCats used some catnip giving them A burst of energy and found 50cn!")
+        break;
+        case 4:
+            totalCatnip = (totalCatnip - 30)
+            alert("-30cn | We need to stop getting high on our own supply Captain...")
+        break;
+        case 5:
+            alert("Not this time Captain!, You need to take a break.")
+        break;
+        case 6:
+            if (autoUpgrades.human.quantity >= 1) {
+                document.getElementById("astronaut-count").innerHTML = (autoUpgrades.human.quantity = (autoUpgrades.human.quantity - 1)).toString()
+                alert("You have lost a Human because Jerry fell asleep!")
+                } else {
+                    totalCatnip = (totalCatnip + 500)
+                    alert("While high off his paws, Jerry discovered a stash of 500cn.")
+                }
+        break;
+        case 7:
+            totalCatnip = (totalCatnip - 100)
+            alert("Nyan Cat stole 100cn before dying in a firey blaze!")
+        break;
+        default:
+            alert("We have none left!")
+            break;
+    }
+}
+    updateCatnip()
+}
