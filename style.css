@@ -52,3 +52,10 @@
         top: 25rem;
     }
 }
+
+@media(min-width: 1440px){
+    .set-cat-pack {
+        position: relative;
+        top: 10rem;
+    }
+}

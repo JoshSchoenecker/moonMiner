@@ -1,4 +1,4 @@
-let totalCatnip = 0;
+let totalCatnip = 750;
 let harvest = 1;
 let collectionInterval = 0;
 
@@ -21,7 +21,7 @@ let autoUpgrades = {
     human: {
         price: 750,
         quantity: 0,
-        multiplyer: 25,
+        multiplyer: 5,
     },
     cat: {
         price: 100,
@@ -44,7 +44,7 @@ function buyClickUpgrade(upgrade) {
           totalCatnip -= item.price
           item.price = (item.price * 2)
           item.quantity++
-          harvest += item.multiplyer
+          harvest *= item.multiplyer
           updateCatnip()
 
         } else {
@@ -60,7 +60,6 @@ function buyAutoUpgrade(upgrade) {
             totalCatnip -= item.price
             item.price = (item.price * 2)
             item.quantity++
-            harvest += item.multiplyer
             updateCatnip()
             startInterval()
         } else {
@@ -70,9 +69,10 @@ function buyAutoUpgrade(upgrade) {
 }
 
 // A setinterval for autoupgrades
-function collectAutoUpgrades() {
-    for (let i = 0; i < autoUpgrades.length; i++) {
-        collectionInterval = (autoUpgrades.cat.quantity * autoUpgrades.cat.multiplyer + totalCatnip)
+function collectAutoUpgrades(modifier) {
+    let modify = autoUpgrades[modifier]
+    for (let i = 0; i < autoUpgrades[modify]; i++) {
+        collectionInterval = ((autoUpgrades.cat.quantity * autoUpgrades.cat.multiplyer) + totalCatnip)
     }
     totalCatnip = (totalCatnip + collectionInterval);
     updateCatnip()   
