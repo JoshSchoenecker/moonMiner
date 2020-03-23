@@ -1,4 +1,4 @@
-let totalCatnip = 750;
+let totalCatnip = 0;
 let harvest = 1;
 let collectionInterval = 0;
 
